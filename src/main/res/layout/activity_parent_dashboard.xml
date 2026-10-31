@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+    <TextView android:id="@+id/tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="أسرتك بأمان مع أمانك 💪"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="12dp"
+        android:background="#E8F5E9"/>
+    <Button android:id="@+id/btn_track"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="تتبع روحي 1-5"
+        android:layout_marginTop="16dp"/>
+    <Button android:id="@+id/btn_apps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="التحكم في التطبيقات"
+        android:layout_marginTop="8dp"/>
+    <Button android:id="@+id/btn_find"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ابحث عن هاتفي"
+        android:layout_marginTop="8dp"/>
+    <Button android:id="@+id/btn_sub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="فودافون كاش 50 / 120 - 7 ايام مجانا"
+        android:layout_marginTop="24dp"/>
+</LinearLayout>
