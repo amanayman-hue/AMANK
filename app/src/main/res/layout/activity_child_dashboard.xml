@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="#FFF3E0">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="روحي انت بأمان مع أمانك ❤️"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#E91E63" />
+
+    <TextView
+        android:id="@+id/tv_child_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🟢 محمي"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_marginTop="32dp"
+        android:background="#E8F5E9"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/tv_child_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="التطبيق يعمل في الخلفية لحمايتك"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        android:textColor="#757575" />
+
+</LinearLayout>
