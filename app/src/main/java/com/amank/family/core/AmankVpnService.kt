@@ -1,22 +1,39 @@
 package com.amank.family.core
 
-import android.app.*
+import android.net.VpnService
 import android.content.Intent
-import android.os.Build
-import android.os.IBinder
-class AmankForegroundService : Service() {
-    override fun onBind(i: Intent?): IBinder? = null
-    override fun onStartCommand(intent: Intent?, f: Int, id: Int): Int {
-        val isParent = PrefsManager(this).isParent()
-        val text = if(isParent) "أسرتك بأمان مع أمانك 💪" else "روحي انت بأمان مع أمانك ❤️"
-        
-        if (Build.VERSION.SDK_INT >= 26) {
-            val ch = NotificationChannel("amank", "Amank", NotificationManager.IMPORTANCE_LOW)
-            getSystemService(NotificationManager::class.java).createNotificationChannel(ch)
+import android.os.ParcelFileDescriptor
+
+class AmankVpnService : VpnService() {
+
+    private var vpnInterface: ParcelFileDescriptor? = null
+
+    override fun onStartCommand(
+        intent: Intent?,
+        flags: Int,
+        startId: Int
+    ): Int {
+
+        if (vpnInterface != null) {
+            return START_STICKY
         }
-        val n = if (Build.VERSION.SDK_INT >= 26) Notification.Builder(this, "amank").setContentTitle("Amank Family").setContentText(text).setSmallIcon(android.R.drawable.ic_dialog_info).setOngoing(true).build()
-        else Notification.Builder(this).setContentTitle("Amank Family").setContentText(text).setSmallIcon(android.R.drawable.ic_dialog_info).setOngoing(true).build()
-        startForeground(1, n)
+
+        val builder = Builder()
+            .setSession("AMANK Protection")
+            .addAddress("10.10.10.1", 32)
+            .addRoute("0.0.0.0", 0)
+            .addDnsServer("1.1.1.1")
+            .addDnsServer("1.0.0.1")
+            .setMtu(1500)
+
+        vpnInterface = builder.establish()
+
         return START_STICKY
+    }
+
+    override fun onDestroy() {
+        vpnInterface?.close()
+        vpnInterface = null
+        super.onDestroy()
     }
 }
